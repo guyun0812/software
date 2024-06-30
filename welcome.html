@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>首页二</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all" />
+    <link rel="stylesheet" href="../css/public.css" media="all" />
+    <style>
+        .layui-card {
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            color: #1aa094;
+        }
+
+        .icon-cray {
+            color: #ffb800 !important;
+        }
+
+        .icon-blue {
+            color: #1e9fff !important;
+        }
+
+        .icon-tip {
+            color: #ff5722 !important;
+        }
+
+        .layuimini-qiuck-module {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .layuimini-qiuck-module a i {
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 2px;
+            font-size: 30px;
+            background-color: #f8f8f8;
+            color: #333;
+            transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+        }
+
+        .layuimini-qiuck-module a cite {
+            position: relative;
+            top: 2px;
+            display: block;
+            color: #666;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .welcome-module {
+            width: 100%;
+            height: auto;
+        }
+
+        .panel {
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .panel-body {
+            padding: 10px;
+        }
+
+        .panel-title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 12px;
+            color: inherit;
+        }
+
+        .label {
+            display: inline;
+            padding: 0.2em 0.6em 0.3em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25em;
+            margin-top: 0.3em;
+        }
+
+        .layui-red {
+            color: red;
+        }
+
+        .main_btn>p {
+            height: 40px;
+        }
+
+        .layui-bg-number {
+            background-color: #f8f8f8;
+        }
+
+        .layuimini-notice:hover {
+            background: #f6f6f6;
+        }
+
+        .layuimini-notice {
+            padding: 7px 16px;
+            clear: both;
+            font-size: 12px !important;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s ease-in-out;
+        }
+
+        .layuimini-notice-title,
+        .layuimini-notice-label {
+            padding-right: 70px !important;
+            text-overflow: ellipsis !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+        }
+
+        .layuimini-notice-title {
+            line-height: 28px;
+            font-size: 14px;
+        }
+
+        .layuimini-notice-extra {
+            position: absolute;
+            top: 50%;
+            margin-top: -8px;
+            right: 16px;
+            display: inline-block;
+            height: 16px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <i class="fa fa-warning icon"></i>数据统计
+                            <div class="refresh-btn" style="float: right; cursor: pointer"><i
+                                    class="fa fa-refresh icon"></i>刷新</div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="welcome-module">
+                                <div class="layui-row layui-col-space10">
+                                    <div class="layui-col-md6 layui-col-xs12">
+                                        <div class="panel layui-bg-number">
+                                            <div class="panel-body">
+                                                <div class="panel-title">
+                                                    <span class="label pull-right layui-bg-blue">授权</span>
+                                                    <h5>今日访客</h5>
+                                                </div>
+                                                <div class="panel-content">
+                                                    <h1 class="no-margins" id="ah_uv_today"></h1>
+                                                    <small>今日访问量: <span id="ah_pv_today"></span> </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-col-md6 layui-col-xs12">
+                                        <div class="panel layui-bg-number">
+                                            <div class="panel-body">
+                                                <div class="panel-title">
+                                                    <span class="label pull-right layui-bg-green">实时</span>
+                                                    <h5>今日登录应用</h5>
+                                                </div>
+                                                <div class="panel-content">
+                                                    <h1 class="no-margins" id="user_today_login"></h1>
+                                                    <small>总应用数: <span id="user_today_login_num"></span></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md6 layui-col-xs12">
+                                        <div class="panel layui-bg-number">
+                                            <div class="panel-body">
+                                                <div class="panel-title">
+                                                    <span class="label pull-right layui-bg-green">实时</span>
+                                                    <h5>未激活卡密</h5>
+                                                </div>
+                                                <div class="panel-content">
+                                                    <h1 class="no-margins" id="user_today_reg"></h1>
+                                                    <small>已激活卡密: <span id="user_allnumber"></span></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>访客统计</div>
+                        <div class="layui-card-body">
+                            <div id="echarts-records" style="width: 100%; min-height: 200px"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="fa fa-fire icon"></i>服务端状态</div>
+                        <div class="layui-card-body layui-text" id="c_server">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <script src="../js/jquery-3.7.1.min.js" charset="utf-8"></script>
+    <script src="../js/crypto-js.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script>
+        layui.use(['layer', 'miniTab', 'echarts'], function () {
+            var $ = layui.jquery,
+                layer = layui.layer,
+                miniTab = layui.miniTab,
+                echarts = layui.echarts
+            miniTab.listen()
+
+
+            function getstatic() {
+                //let load = layer.load(0)
+                sendAjax(getstaticUrl, {}, function (code, msg, data) {
+                    //成功回调   
+                    if (code === 1) {
+                        $('#ah_uv_today').html(data.ah_uv_today)
+                        $('#ah_pv_today').html(data.ah_pv_today)
+                        $('#user_today_login_num').html(data.user_today_login_num)
+                        $('#user_today_login').html(data.user_today_login)
+                        $('#user_today_reg').html(data.user_today_reg)
+                        $('#user_allnumber').html(data.user_allnumber)
+
+
+                        $('#auth_server_name').html(data.auth_server_name)
+                        $('#auth_server_guid').html(data.auth_server_guid)
+                        $('#auth_server_yxsj').html(data.auth_server_yxsj)
+                        $('#auth_server_qdsj').html(data.auth_server_qdsj)
+
+                        $('#shar_server_name').html(data.shar_server_name)
+                        $('#shar_server_guid').html(data.shar_server_guid)
+                        $('#shar_server_yxsj').html(data.shar_server_yxsj)
+                        $('#shar_server_qdsj').html(data.shar_server_qdsj)
+
+                        //授权站统计
+                        const { dataday } = data
+                        let xAxisData = []
+                        let uvData = []
+                        let pvData = []
+                        for (let i = dataday.length - 1; i >= 0; i--) {
+                            xAxisData.push(dataday[i].time)
+                            uvData.push(dataday[i].uv)
+                            pvData.push(dataday[i].pv)
+                        }
+
+                        var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden')
+                        var optionRecords = {
+                            tooltip: {
+                                trigger: 'axis',
+                            },
+                            legend: {
+                                data: ['UV', 'PV'],
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true,
+                            },
+                            toolbox: {
+                                feature: {
+                                    saveAsImage: {},
+                                },
+                            },
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: xAxisData,
+                            },
+                            yAxis: {
+                                type: 'value',
+                            },
+                            series: [
+                                {
+                                    name: 'UV',
+                                    type: 'line',
+                                    data: uvData,
+                                },
+                                {
+                                    name: 'PV',
+                                    type: 'line',
+                                    data: pvData,
+                                },
+                            ],
+                        }
+                        echartsRecords.setOption(optionRecords)
+
+                        //授权站统计
+                        const { service } = data
+                        var html = '';
+
+                        for (var i = 0; i < service.length; i++) {
+
+                            var row = service[i];
+                            html += `
+                                    <table class="layui-table">
+                                    <colgroup>
+                                        <col width="100" />
+                                        <col />
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>主机名称</td>
+                                            <td><span style="color:red">`+ row.name + `</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>主机GUID</td>
+                                            <td>`+ row.guid + `</td>
+                                        </tr>
+                                        <tr>
+                                            <td>运行时间</td>
+                                            <td>`+ row.yxsj + `</td>
+                                        </tr>
+                                        <tr>
+                                            <td>启动时间</td>
+                                            <td>`+ row.qdsj + `</td>
+                                        </tr>
+                                        <tr>
+                                            <td>今日PV</td>
+                                            <td>
+                                                <span style="color:blue">`+ row.pv + `</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                    `
+
+
+                        }
+
+                        $('#c_server').html(html);
+
+
+
+
+                        // echarts 窗口缩放自适应
+                        window.onresize = function () {
+                            echartsRecords.resize()
+                        }
+
+
+
+
+                        // echarts 窗口缩放自适应
+                        window.onresize = function () {
+                            echartsRecords_shar.resize()
+                        }
+
+                    } else {
+                        console.log("code 不等于 1")
+                        layer.alert(msg)
+                    }
+                })
+
+            }
+
+            $('.refresh-btn').click(function () {
+                initWelcome()
+            })
+
+            // 获取用户信息
+
+
+            getstatic()
+        })
+
+        $(function () { })
+    </script>
+</body>
+
+</html>
